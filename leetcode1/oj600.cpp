@@ -6,6 +6,8 @@
  ************************************************************************/
 
 #include<iostream>
+#include <cstdio>
+
 using namespace std;
 
 int n, m, target, num[3005][3005];
@@ -22,7 +24,7 @@ int main()
     int x = n, y = 1;
     while (x >= 1 && y <= m) {
         if (num[x][y] == target) {
-            cout << x << " " << y << endl;
+            printf("%d %d\n", x, y);
             return 0;
         }
         if (num[x][y] > target) {
@@ -31,6 +33,6 @@ int main()
             y++;
         }
     }
-    cout << "not found" << endl;
+    printf("not found");
     return 0;
 }
