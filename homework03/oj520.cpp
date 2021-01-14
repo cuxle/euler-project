@@ -5,33 +5,32 @@
 	> Created Time: Tue 12 Jan 2021 01:46:50 PM CST
  ************************************************************************/
 
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
-long long num[10000000];
+long long a, k, n, sum1, sum2;
+// sum1 (1 ~ k - 1)
+// sum2 (k + 1 ~ n)
 
 int main()
 {
-    int a;
     cin >> a;
-
-    for (int i = 1; i < 10000000; i++) {
-        num[i] = i;
-        num[i] += num[i - 1];
-    }    
-    
-    for (int k = a; k < 10000000; k++) {
-        cout << "k:" << k << " " << num[k] << endl;
-        for (int n = k + 2; 1; n++) {
-            if (num[k] == (num[n] - num[k+1])) {
-                cout << k + 1 << " " << n << endl;
-                return 0;                
-            } else if(num[k] > (num[n] - num[k+1])) {
-                continue;
-            } else {
-                break;
-            }
+    k = a, n = k + 1;
+    sum1 = (1 + a - 1) * (a - 1) / 2;
+    sum2 = n;
+    while (sum1 != sum2) {
+        if (sum1 > sum2) {
+            n++;
+            sum2 += n;
+        } else {
+            sum1 += k;
+            sum2 -= (k + 1);
+            k++;
         }
+
     }
+    cout << k << " " << n << endl;
     return 0;
 }
+
